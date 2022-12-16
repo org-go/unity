@@ -1,0 +1,21 @@
+CREATE TABLE `d_user_copy1` (
+  `pk` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) DEFAULT NULL COMMENT '对外ID',
+  `supperior_pk` bigint(20) DEFAULT '0' COMMENT '上级PK',
+  `path_pk` varchar(200) DEFAULT '' COMMENT '级联PK',
+  `phone` bigint(20) DEFAULT NULL COMMENT '手机号',
+  `account` varchar(20) DEFAULT '' COMMENT '账号',
+  `password` varchar(20) NOT NULL DEFAULT '' COMMENT '密码',
+  `name` varchar(20) DEFAULT '' COMMENT '名称',
+  `rank` int(11) DEFAULT NULL COMMENT '权益级别',
+  `score` bigint(20) DEFAULT NULL COMMENT '当前积分',
+  `scope` set('x','xx','x21','x22') DEFAULT 'x' COMMENT 'x： 正常，\r\nxx： 禁用，\r\nx21： 交易冻结，\r\nx22： 任务冻结',
+  `created_time` timestamp NULL DEFAULT NULL COMMENT '创建时间',
+  `updated_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `last_login_time` timestamp NULL DEFAULT NULL COMMENT '最后登陆时间',
+  `last_login_ip` varchar(20) DEFAULT NULL COMMENT '最后登陆IP',
+  PRIMARY KEY (`pk`) USING BTREE,
+  KEY `id` (`id`) USING BTREE,
+  KEY `mix_up_path_pk` (`supperior_pk`,`path_pk`) USING BTREE,
+  KEY `mix_account_phone` (`account`,`phone`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC COMMENT='data_用户表'

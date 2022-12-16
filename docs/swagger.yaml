@@ -1,0 +1,332 @@
+basePath: /
+definitions:
+  api.Response:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+    type: object
+  assembler.WelfareAssembler:
+    properties:
+      created_time:
+        description: 创建时间
+        type: string
+      created_user:
+        description: 创建人
+        type: string
+      description:
+        description: 福利描述
+        type: string
+      id:
+        description: 对外ID
+        type: integer
+      link:
+        description: 福利链接
+        type: string
+      name:
+        description: 福利名称
+        type: string
+      pk:
+        type: integer
+      platform_pk:
+        description: 平台PK
+        type: integer
+      status:
+        description: 状态; 1:启用； 2：禁用
+        type: integer
+      title:
+        description: 福利标题
+        type: string
+      updated_time:
+        description: 更新时间
+        type: string
+      welfare_classify_pk:
+        description: 福利类型PK
+        type: integer
+    type: object
+  req.SelectWelfareOptionReqWithPage:
+    properties:
+      current:
+        description: 当前页
+        type: integer
+      id:
+        type: integer
+      name:
+        description: 福利名称
+        type: string
+      page_size:
+        description: 页大小
+        maximum: 100
+        type: integer
+      pagination:
+        description: 是否使用分页查询
+        type: boolean
+      platform_id:
+        description: 平台ID
+        type: integer
+      status:
+        description: 状态：1:启用； 2：禁用
+        type: integer
+      title:
+        description: 福利标题
+        type: string
+      welfare_classify_id:
+        description: 福利类型PK
+        type: integer
+    type: object
+  resp.OptionResp:
+    properties:
+      text:
+        description: 文本
+        type: string
+      value:
+        description: 值
+        type: integer
+    type: object
+host: https://3platz.t.dev.pay.fun/
+info:
+  contact:
+    name: org.pm.iss.service
+  description: ISS
+  license:
+    name: GIN.swagger
+    url: https://github.com/swaggo/swag/blob/master/README_zh-CN.md#%E5%A6%82%E4%BD%95%E4%B8%8Egin%E9%9B%86%E6%88%90
+  termsOfService: https://paymedia.yuque.com/os/hb9uhc/vgkey3#k5NZw
+  title: ISS
+  version: "2.0"
+paths:
+  /platform/option:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/api.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/resp.OptionResp'
+                  type: array
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: 平台选项
+      tags:
+      - 平台
+  /rank/option:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/api.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/resp.OptionResp'
+                  type: array
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: 头衔选项
+      tags:
+      - 头衔
+  /rights/page:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: The object content
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/req.SelectWelfareOptionReqWithPage'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/api.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/assembler.WelfareAssembler'
+                  type: array
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: 福利列表分页
+      tags:
+      - 福利
+  /rights_classify/option:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/api.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/resp.OptionResp'
+                  type: array
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: 权益类型选项
+      tags:
+      - 权益
+  /task/page:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: 任务列表分页
+      tags:
+      - 任务
+  /user/list:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: 用户列表分页
+      tags:
+      - 用户
+  /welfare/page:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: The object content
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/req.SelectWelfareOptionReqWithPage'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/api.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/assembler.WelfareAssembler'
+                  type: array
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: 福利列表分页
+      tags:
+      - 福利
+  /welfare_classify/option:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/api.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/resp.OptionResp'
+                  type: array
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: 福利类型选项
+      tags:
+      - 福利
+swagger: "2.0"

@@ -1,0 +1,16 @@
+.vscode
+/.agollo
+/unity.service.exe
+/logs
+.idea
+/data
+/test
+/test/*
+/vendor
+/**/*_test.go
+/tmp
+.vercel
+/view
+/view/
+/excel/
+/backup/

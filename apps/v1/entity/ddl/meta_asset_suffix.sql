@@ -1,0 +1,7 @@
+CREATE TABLE `meta_asset_suffix` (
+  `pk` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) DEFAULT NULL COMMENT '名称',
+  `description` varchar(100) DEFAULT NULL COMMENT '描述',
+  `scene` varchar(100) DEFAULT NULL COMMENT '场景',
+  PRIMARY KEY (`pk`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC

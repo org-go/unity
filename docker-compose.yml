@@ -1,0 +1,54 @@
+version: '3'
+######## 启动本项目之前，要先启动本项目依赖的环境docker-compose-env.yml #######
+x-default-logging: &logging
+  driver: "json-file"
+  options:
+    max-size: "5m"
+    max-file: "2"
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx-gateway
+    restart: always
+    privileged: true
+    environment:
+      - TZ=Asia/Tokyo
+
+    ports:
+      - 808:8081
+    volumes:
+      - ./deployiss/nginx/conf.d:/etc/nginx/conf.d
+      - ./data/nginx/log:/var/log/nginx
+    depends_on:
+      - iss-api
+    networks:
+      - iss_net
+
+  ########################################    ISS业务   ########################################
+
+  iss-api:
+    #image: cosmtrek/air:latest
+    container_name: iss-api
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: iss:v1.1.1.1.4
+    ports:
+      - "80:80"
+    environment:
+      TZ: Asia/Tokyo
+      GOPROXY: https://goproxy.cn,direct
+    privileged: true
+    restart: always
+    logging: *logging
+    networks:
+      - iss_net
+
+
+networks:
+  iss_net:
+    driver: bridge
+    #ipam:
+      #config:
+      #  - subnet: 172.21.0.0/16
+

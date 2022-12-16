@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+
+
+  mysql:
+    image: mysql:8.0.24
+    container_name: mysql
+    environment:
+      TZ: Asia/Tokyo
+      MYSQL_ROOT_PASSWORD: PXDN93VRKUm8TeE7
+
+    ports:
+      - 33069:3306
+    volumes:
+      - ./data/mysql/data:/var/lib/mysql
+      - ./deployiss/sql:/etc/sql/
+    command:
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+      --lower_case_table_names=1
+    privileged: true
+    restart: always
+    tty: true
+    networks:
+      - iss_net
+
+
+  redis:
+    image: redis:6.2.5
+    container_name: redis
+    ports:
+      - 63799:6379
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - ./data/redis/data:/data:rw
+    command: "redis-server --requirepass PXDN93VRKUm8TeE7  --appendonly yes"
+    privileged: true
+    restart: always
+    tty: true
+    networks:
+      - iss_net
+
+
+networks:
+  iss_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
+
