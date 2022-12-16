@@ -114,3 +114,11 @@ help: ## Display available commands
 .PHONY: atlas
 atlas: #:
 	atlas schema inspect -u "mysql://root:root@localhost:3306/unity" > schema.hcl
+
+
+
+###
+# - crawLab - craw
+# - zinc	- nosql
+# - gotify  - websocket
+###
