@@ -3,7 +3,7 @@
 ## [Viewing tools](https://www.iminho.me/)
 
 ## Overview:
-- [WelfareApi]
+- [TaskOrderApi]
 - [Waiting to write...]
 
 --------------------
@@ -14,11 +14,11 @@
 
 #### Request URL:
 
-- http://localhost/welfare/page
+- http://localhost/task_order/receive
 
 #### Methods:
 
-- POST
+- GET
 
 #### Parameters:
 

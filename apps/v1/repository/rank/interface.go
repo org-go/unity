@@ -7,6 +7,8 @@ import (
 
 type (
 	//  iRankRepoInterface
+	//  D_rank
+	//  头衔表
 	iRankRepoInterface interface {
 		//  Option
 		Option(c *gin.Context) (ranks *assembler.RankAssemblers)

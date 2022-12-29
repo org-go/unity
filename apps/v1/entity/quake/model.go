@@ -1,8 +1,9 @@
 package quake
 
 import (
+    "entgo.io/ent/examples/start/ent"
     "sync"
-    "unity.service/apps/v1/entity/v_quake/ent"
+
 )
 
 var do sync.Once

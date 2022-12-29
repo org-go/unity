@@ -7,6 +7,8 @@ import (
 
 type (
 	//  iRightsClassifyRepoInterface
+	//  D_rights_classify
+	//  权益类目表
 	iRightsClassifyRepoInterface interface {
 		//  Option
 		Option(c *gin.Context) (ranks *assembler.RankAssemblers)

@@ -9,7 +9,15 @@
      "basePath": "/v1",
      "tags": [
           {
-               "name": "RankApi",
+               "name": "TaskClassifyApi",
+               "description": ""
+          },
+          {
+               "name": "TaskApi",
+               "description": ""
+          },
+          {
+               "name": "TaskOrderApi",
                "description": ""
           }
      ],
@@ -18,10 +26,166 @@
           "https"
      ],
      "paths": {
-          "/rank/option": {
+          "/task/create": {
+               "post": {
+                    "tags": [
+                         "TaskApi"
+                    ],
+                    "summary": "",
+                    "description": "",
+                    "consumes": [
+                         "application/json",
+                         "application/xml"
+                    ],
+                    "produces": [
+                         "application/json",
+                         "application/xml"
+                    ],
+                    "parameters": [
+                         {
+                              "in": "body",
+                              "name": "body",
+                              "description": "",
+                              "required": true,
+                              "schema": {
+                                   "$ref": ""
+                              }
+                         }
+                    ],
+                    "responses": {
+                         "400": {
+                              "description": "v"
+                         },
+                         "404": {
+                              "description": "not found"
+                         },
+                         "405": {
+                              "description": "Validation exception"
+                         }
+                    }
+               }
+          },
+          "/task/page": {
+               "post": {
+                    "tags": [
+                         "TaskApi"
+                    ],
+                    "summary": "",
+                    "description": "",
+                    "consumes": [
+                         "application/json",
+                         "application/xml"
+                    ],
+                    "produces": [
+                         "application/json",
+                         "application/xml"
+                    ],
+                    "parameters": [
+                         {
+                              "in": "body",
+                              "name": "body",
+                              "description": "",
+                              "required": true,
+                              "schema": {
+                                   "$ref": ""
+                              }
+                         }
+                    ],
+                    "responses": {
+                         "400": {
+                              "description": "v"
+                         },
+                         "404": {
+                              "description": "not found"
+                         },
+                         "405": {
+                              "description": "Validation exception"
+                         }
+                    }
+               }
+          },
+          "/task/update": {
+               "post": {
+                    "tags": [
+                         "TaskApi"
+                    ],
+                    "summary": "",
+                    "description": "",
+                    "consumes": [
+                         "application/json",
+                         "application/xml"
+                    ],
+                    "produces": [
+                         "application/json",
+                         "application/xml"
+                    ],
+                    "parameters": [
+                         {
+                              "in": "body",
+                              "name": "body",
+                              "description": "",
+                              "required": true,
+                              "schema": {
+                                   "$ref": ""
+                              }
+                         }
+                    ],
+                    "responses": {
+                         "400": {
+                              "description": "v"
+                         },
+                         "404": {
+                              "description": "not found"
+                         },
+                         "405": {
+                              "description": "Validation exception"
+                         }
+                    }
+               }
+          },
+          "/task_classify/option": {
                "get": {
                     "tags": [
-                         "RankApi"
+                         "TaskClassifyApi"
+                    ],
+                    "summary": "",
+                    "description": "",
+                    "consumes": [
+                         "application/json",
+                         "application/xml"
+                    ],
+                    "produces": [
+                         "application/json",
+                         "application/xml"
+                    ],
+                    "parameters": [
+                         {
+                              "in": "body",
+                              "name": "body",
+                              "description": "",
+                              "required": true,
+                              "schema": {
+                                   "$ref": ""
+                              }
+                         }
+                    ],
+                    "responses": {
+                         "400": {
+                              "description": "v"
+                         },
+                         "404": {
+                              "description": "not found"
+                         },
+                         "405": {
+                              "description": "Validation exception"
+                         }
+                    }
+               }
+          },
+          "/task_order/receive": {
+               "get": {
+                    "tags": [
+                         "TaskOrderApi"
                     ],
                     "summary": "",
                     "description": "",

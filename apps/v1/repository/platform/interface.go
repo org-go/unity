@@ -7,6 +7,8 @@ import (
 
 type (
 	//  iPlatformRepoInterface
+	//  D_platform
+	//  平台表
 	iPlatformRepoInterface interface {
 		//  Option
 		Option(c *gin.Context) (platform *assembler.PlatformAssemblers)

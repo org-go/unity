@@ -3,7 +3,7 @@
 ## [Viewing tools](https://www.iminho.me/)
 
 ## Overview:
-- [WelfareApi]
+- [RightsApi]
 - [Waiting to write...]
 
 --------------------
@@ -14,7 +14,7 @@
 
 #### Request URL:
 
-- http://localhost/welfare/page
+- http://localhost/rights/page
 
 #### Methods:
 

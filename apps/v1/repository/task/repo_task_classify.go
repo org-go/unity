@@ -7,7 +7,7 @@ import (
     "unity.service/apps/v1/repository/repo"
 )
 
-type welfareClassifyRepo struct {}
+type taskClassifyRepo struct {}
 
 /**
  * $(Option)
@@ -16,9 +16,9 @@ type welfareClassifyRepo struct {}
  * @param ctx
  * @return classify
  */
-func (this welfareClassifyRepo) Option(ctx context.Context) (classify *assembler.WelfareClassifyAssemblers) {
+func (this taskClassifyRepo) Option(ctx context.Context) (classify *assembler.TaskClassifyAssemblers) {
 
-    db := repo.ServiceDBA.Mysql.Table(new(model.DWelfareClassify).TableName())
+    db := repo.ServiceDBA.Mysql.Table(new(model.DTaskClassify).TableName())
     _ = db.Where(`status = ?`, 1 ).Select(`pk, name`).Find(classify).Error
     return classify
 

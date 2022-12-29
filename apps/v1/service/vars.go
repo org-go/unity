@@ -6,15 +6,14 @@ import (
     "github.com/go-redis/redis/v8"
     "sync"
     "unity.service/pkg/org.unity.sdk/setting"
-
-    //"github.com/hibiken/asynq"
+    "github.com/hibiken/asynq"
 
 )
 var o  sync.Once
 var c  *redis.Client
 type Edge struct {
     Ctx *context.Context
-    //AsyncRedis *asynq.Client
+    AsyncRedis *asynq.Client
     Redis *redis.Client
     L *sync.Mutex
     C *sync.Cond
@@ -26,7 +25,7 @@ type Edge struct {
 func Initialization() *Edge {
     return &Edge{
         Ctx: nil,
-        //AsyncRedis: asynq.NewClient(asynq.RedisClientOpt{Addr: setting.RedisConf.Host, Password: setting.RedisConf.Password, DB: 10}),
+        AsyncRedis: asynq.NewClient(asynq.RedisClientOpt{Addr: setting.RedisConf.Host, Password: setting.RedisConf.Password, DB: 10}),
         Redis: Rs(),
         L: new(sync.Mutex),
         C: new(sync.Cond),

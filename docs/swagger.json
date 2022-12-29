@@ -223,7 +223,7 @@
                 }
             }
         },
-        "/task/page": {
+        "/task/create": {
             "post": {
                 "consumes": [
                     "application/json"
@@ -234,7 +234,18 @@
                 "tags": [
                     "任务"
                 ],
-                "summary": "任务列表分页",
+                "summary": "创建任务",
+                "parameters": [
+                    {
+                        "description": "The object content",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/req.TaskDataReq"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -257,7 +268,189 @@
                 }
             }
         },
-        "/user/list": {
+        "/task/page": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "任务"
+                ],
+                "summary": "任务列表分页",
+                "parameters": [
+                    {
+                        "description": "The object content",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/req.SelectTaskOptionReqWithPage"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/task/update": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "任务"
+                ],
+                "summary": "更新任务",
+                "parameters": [
+                    {
+                        "description": "The object content",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/req.TaskDataReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/task_classify/option": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "任务"
+                ],
+                "summary": "任务类型选项",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/api.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/resp.OptionResp"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/task_order/receive": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "任务"
+                ],
+                "summary": "接单(领取任务)",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "任务单号",
+                        "name": "task_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/api.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/page": {
             "post": {
                 "consumes": [
                     "application/json"
@@ -466,6 +659,35 @@
                 }
             }
         },
+        "req.SelectTaskOptionReqWithPage": {
+            "type": "object",
+            "properties": {
+                "current": {
+                    "description": "当前页",
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "page_size": {
+                    "description": "页大小",
+                    "type": "integer",
+                    "maximum": 100
+                },
+                "pagination": {
+                    "description": "是否使用分页查询",
+                    "type": "boolean"
+                },
+                "status": {
+                    "description": "状态：",
+                    "type": "integer"
+                },
+                "task_classify_pk": {
+                    "description": "任务类型PK",
+                    "type": "integer"
+                }
+            }
+        },
         "req.SelectWelfareOptionReqWithPage": {
             "type": "object",
             "properties": {
@@ -504,6 +726,51 @@
                 "welfare_classify_id": {
                     "description": "福利类型PK",
                     "type": "integer"
+                }
+            }
+        },
+        "req.TaskDataReq": {
+            "type": "object",
+            "properties": {
+                "claim": {
+                    "description": "要求",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "描述",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "名称",
+                    "type": "string"
+                },
+                "owner_user_id": {
+                    "description": "任务负责人",
+                    "type": "integer"
+                },
+                "task_classify_pk": {
+                    "description": "任务类目PK",
+                    "type": "integer"
+                },
+                "task_end_time": {
+                    "description": "任务结束时间",
+                    "type": "string"
+                },
+                "task_number": {
+                    "description": "单数",
+                    "type": "integer"
+                },
+                "task_score": {
+                    "description": "任务积分/单",
+                    "type": "integer"
+                },
+                "task_start_time": {
+                    "description": "任务开始时间",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "标题",
+                    "type": "string"
                 }
             }
         },

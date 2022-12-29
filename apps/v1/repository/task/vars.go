@@ -2,9 +2,10 @@ package task
 
 var (
 
-    Task iWelfareRepoInterface = new(welfareRepo)
+    TaskClassify iTaskClassifyRepository = new(taskClassifyRepo)
 
-    TaskClassify iWelfareClassifyRepository = new(welfareClassifyRepo)
+    Task iTaskRepoInterface = new(taskRepo)
 
-    TaskOrder iWelfareClassifyRepository = new(welfareClassifyRepo)
+    TaskOrder iTaskOrderRepoInterface = new(taskOrderRepo)
+
 )

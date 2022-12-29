@@ -10,11 +10,12 @@ type DWelfare struct {
 	Name              string    `gorm:"name" json:"name"`                               // 福利名称
 	Title             string    `gorm:"title" json:"title"`                             // 福利标题
 	Description       string    `gorm:"description" json:"description"`                 // 福利描述
-	Link              string    `gorm:"link" json:"link"`                               // 福利链接
-	Status            byte      `gorm:"status" json:"status"`                           // 状态; 1:启用； 2：禁用
-	CreatedTime       time.Time `gorm:"created_time" json:"created_time"`               // 创建时间
-	UpdatedTime       time.Time `gorm:"updated_time" json:"updated_time"`               // 更新时间
-	CreatedUser       string    `gorm:"created_user" json:"created_user"`               // 创建人
+	Text              string    `gorm:"text" json:"text"`
+	Link              string    `gorm:"link" json:"link"`                 // 福利链接
+	Status            byte      `gorm:"status" json:"status"`             // 状态; 1:启用； 2：禁用
+	CreatedTime       time.Time `gorm:"created_time" json:"created_time"` // 创建时间
+	UpdatedTime       time.Time `gorm:"updated_time" json:"updated_time"` // 更新时间
+	CreatedUser       string    `gorm:"created_user" json:"created_user"` // 创建人
 }
 
 func (*DWelfare) TableName() string {

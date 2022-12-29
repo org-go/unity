@@ -27,6 +27,8 @@ type (
     assemble struct {
         tasks         *assembler.TaskAssemblers
         task          *assembler.TaskAssembler
+        taskOrders    *assembler.TaskOrderAssemblers
+        taskOrder     *assembler.TaskOrderAssembler
         taskClassifys *assembler.TaskClassifyAssemblers
         taskClassify  *assembler.TaskClassifyAssembler
     }

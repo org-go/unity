@@ -9,6 +9,8 @@ import (
 
 type (
 	//  iWelfareRepoInterface
+	//  D_welfare
+	//  福利表
 	iWelfareRepoInterface interface {
 
 		//  Create
@@ -27,6 +29,8 @@ type (
 
 
 	//  iWelfareClassifyRepository
+	//  D_welfare_classify
+	//  福利类目表
 	iWelfareClassifyRepository interface {
 		//  Option
 		Option(ctx context.Context) (classify *assembler.WelfareClassifyAssemblers)

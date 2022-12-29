@@ -46,11 +46,11 @@ func (self version) option(auc *gin.RouterGroup) *version {
 func (self version) http() {
 
 	base := ginrpc.New()
-	base.Register(self.auc, new(api.WelfareApi))
-	base.Register(self.auc, new(api.WelfareClassifyApi))
-	base.Register(self.auc, new(api.RankApi))
-	base.Register(self.auc, new(api.RightsClassifyApi))
+	base.Register(self.auc, new(api.FeedbackApi))
 	base.Register(self.auc, new(api.PlatformApi))
 	base.Register(self.auc, new(api.RankApi))
+	base.Register(self.auc, new(api.RightsClassifyApi), new(api.RightsApi))
+	base.Register(self.auc, new(api.WelfareClassifyApi), new(api.WelfareApi))
+	base.Register(self.auc, new(api.TaskClassifyApi), new(api.TaskApi), new(api.TaskOrderApi))
 
 }

@@ -62,7 +62,7 @@ func init() {
 	rootCmd.AddCommand(generateCmd)
 }
 
-func DDL()  {
+func Ddl()  {
 	path, _ := os.Getwd()
 	path = path + "/apps/v1/entity/ddl/"
 	ddls := tool.Generate().Dsn("root:root@tcp(127.0.0.1:3306)/unity?charset=utf8").DDL()

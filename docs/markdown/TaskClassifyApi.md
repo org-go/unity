@@ -3,7 +3,7 @@
 ## [Viewing tools](https://www.iminho.me/)
 
 ## Overview:
-- [WelfareApi]
+- [TaskClassifyApi]
 - [Waiting to write...]
 
 --------------------
@@ -14,11 +14,11 @@
 
 #### Request URL:
 
-- http://localhost/welfare/page
+- http://localhost/task_classify/option
 
 #### Methods:
 
-- POST
+- GET
 
 #### Parameters:
 
